@@ -47,7 +47,6 @@ public class BuscadorCajaPokemon {
         
         BuscadorCajaPokemon b = new BuscadorCajaPokemon();
         
-        // Estas líneas son las que hacen que veas algo en la pantalla:
         System.out.println("Nivel Maximo: " + b.nivelMaximo(caja).getNivel());
         System.out.println("Nivel Minimo: " + b.nivelMinimo(caja).getNivel());
         System.out.println("Promedio: " + b.promedio(caja));
