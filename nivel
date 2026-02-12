@@ -1,0 +1,74 @@
+public class BuscadorCajaPokemon {
+
+    public Pokemon nivelMaximo(Pokemon[] caja) {
+        Pokemon max = caja[0];
+        for (int i = 1; i < caja.length; i++) {
+            if (caja[i].getNivel() > max.getNivel()) {
+                max = caja[i];
+            }
+        }
+        return max;
+    }
+
+    public Pokemon nivelMinimo(Pokemon[] caja) {
+        Pokemon min = caja[0];
+        for (int i = 1; i < caja.length; i++) {
+            if (caja[i].getNivel() < min.getNivel()) {
+                min = caja[i];
+            }
+        }
+        return min;
+    }
+
+    public int promedio(Pokemon[] caja) {
+        int suma = 0;
+        for (int i = 0; i < caja.length; i++) {
+            suma += caja[i].getNivel();
+        }
+        return suma / caja.length;
+    }
+
+    public Pokemon devuelvePokemonNivPromedio(Pokemon[] caja) {
+        int prom = promedio(caja);
+        for (int i = 0; i < caja.length; i++) {
+            if (caja[i].getNivel() == prom) {
+                return caja[i];
+            }
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        Pokemon[] caja = {
+            new Pokemon("Pikachu", 10),
+            new Pokemon("Charmander", 30),
+            new Pokemon("Bulbasaur", 20)
+        };
+        
+        BuscadorCajaPokemon b = new BuscadorCajaPokemon();
+        
+        // Estas líneas son las que hacen que veas algo en la pantalla:
+        System.out.println("Nivel Maximo: " + b.nivelMaximo(caja).getNivel());
+        System.out.println("Nivel Minimo: " + b.nivelMinimo(caja).getNivel());
+        System.out.println("Promedio: " + b.promedio(caja));
+        
+        Pokemon pProm = b.devuelvePokemonNivPromedio(caja);
+        if(pProm != null) {
+            System.out.println("Pokemon con nivel promedio: " + pProm.getNivel());
+        }
+    }
+}
+
+class Pokemon {
+    private String nombre;
+    private int nivel;
+
+    public Pokemon(String nombre, int nivel) {
+        this.nombre = nombre;
+        this.nivel = nivel;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+}
